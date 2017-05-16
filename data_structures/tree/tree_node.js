@@ -1,29 +1,52 @@
 'use strict';
 
-var TreeNode = class TreeNode {
+class BinarySearchTree {
+    constructor() {
+        this.root = null;
+    }
+
+    add(value) {
+        if(this.root == null) {
+            this.root = new BSTNode(value);
+            return true;
+        }  else {
+            return this.root.add(value);
+        }
+    }
+}
+
+var BSTNode = class BSTNode {
 
     constructor(value) {
-        this.val = value;
+        this.value = value;
         this.leftNode = null;
         this.rightNode = null;
         this.parent = null;
     }
 
-    static insert_tree(tree, nodeVal, parent) {
-        console.log(nodeVal)
-        if(!tree) {
-            tree = new TreeNode(nodeVal);
-            tree.parent = parent;
-            console.log('before return')
-            return ;
+    add(value) {
+        if(value == this.value) {
+            return false;
+        } else if(value < this.value) {
+            if(this.leftNode == null) {
+                this.leftNode = new BSTNode(value);
+                this.leftNode.parent = this;
+                return true;
+            } else {
+                return this.leftNode.add(value);
+            }
+        } else if(value > this.value) {
+            if(this.rightNode == null) {
+                this.rightNode = new BSTNode(value);
+                this.rightNode.parent = this;
+                return true;
+            } else {
+                return this.rightNode.add(value);
+            }
         }
 
-        if(tree.val > nodeVal) {
-            TreeNode.insert_tree(tree.rightNode, nodeVal, tree);
-        } else {
-            TreeNode.insert_tree(tree.leftNode, nodeVal, tree);
-        }
+        return false;
     }
 }
 
-module.exports = TreeNode;
+module.exports.BinarySearchTree = BinarySearchTree;

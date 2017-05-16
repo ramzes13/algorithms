@@ -1,9 +1,14 @@
-var TreeNode = require('./tree_node');
+var BinarySearchTree = require('./tree_node').BinarySearchTree;
+const util = require('util');
 
-var node1 = new TreeNode(1)
+const tree = new BinarySearchTree();
+
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
 
 for(let i = 0; i < 10; i++) {
-    TreeNode.insert_tree(null, i, node1);
+    tree.add(getRandomArbitrary(0, 50));
 }
-console.log(node1);
-// console.log(TreeNode)
+
+console.log(util.inspect(tree, { showHidden: true, depth: null }));
