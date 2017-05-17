@@ -1,4 +1,4 @@
-var BinarySearchTree = require('./tree_node').BinarySearchTree;
+var BinarySearchTree = require('./tree').BinarySearchTree;
 const util = require('util');
 
 const tree = new BinarySearchTree();
