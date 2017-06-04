@@ -1,35 +1,42 @@
-describe("A suite", function() {
+var BinarySearchTree = require('../../../data_structures/tree/tree.js').BinarySearchTree;
+var BSTNode = require('../../../data_structures/tree/tree_node.js').BSTNode;
 
-  it("contains spec with an expectation", function() {
-    expect(true).toBe(true);
+describe("CRUD tree", function() {
+
+  it("New empty tree", function() {
+    const tree = new BinarySearchTree();
+    expect(tree.root).toBe(null);
+     
   });
 
-  it("and can have a negative case", function() {
-    expect(false).not.toBe(true);
+  it("Add root value", function() {
+    const tree = new BinarySearchTree();
+    tree.add(10);
+
+    expect(tree.root instanceof BSTNode).toBeTruthy(); 
+
+    expect(tree.root.leftNode).toBe(null);
+    expect(tree.root.rightNode).toBe(null);
   });
 
-});
+  it("Add leaf value equal to root value", function() {
+    const tree = new BinarySearchTree();
+    expect(tree.add(10)).toBe(true); 
+    expect(tree.add(10)).toBe(false); 
 
-describe("A suite (some custom)", function() {
-  
-  it("contains spec with an expectation", function() {
-    expect(true).toBe(true);
+    expect(tree.root.value).toBe(10); 
+    expect(tree.root.leftNode).toBe(null);
+    expect(tree.root.rightNode).toBe(null);
   });
 
-  it("and can have a negative case", function() {
-    expect(false).not.toBe(true);
+    it("Add leaf values", function() {
+    const tree = new BinarySearchTree();
+    expect(tree.add(10)).toBe(true); 
+    expect(tree.add(7)).toBe(true); 
+    expect(tree.add(13)).toBe(true); 
+
+    expect(tree.root.value).toBe(10); 
+    expect(tree.root.leftNode.value).toBe(7);
+    expect(tree.root.rightNode.value).toBe(13);
   });
-
-});
-
-describe("A suite (other custom)", function() {
-  
-  xit("contains spec with an expectation", function() {
-    expect(true).toBe(true);
-  });
-
-  it("and can have a negative case", function() {
-    expect(false).not.toBe(true);
-  });
-
 });
