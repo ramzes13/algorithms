@@ -9,18 +9,18 @@ var BSTNode = class BSTNode {
     }
 
     add(value) {
-        if(value == this.value) {
+        if (value == this.value) {
             return false;
-        } else if(value < this.value) {
-            if(this.leftNode == null) {
+        } else if (value < this.value) {
+            if (this.leftNode == null) {
                 this.leftNode = new BSTNode(value);
                 this.leftNode.parent = this;
                 return true;
             } else {
                 return this.leftNode.add(value);
             }
-        } else if(value > this.value) {
-            if(this.rightNode == null) {
+        } else if (value > this.value) {
+            if (this.rightNode == null) {
                 this.rightNode = new BSTNode(value);
                 this.rightNode.parent = this;
                 return true;
