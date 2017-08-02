@@ -1,22 +1,22 @@
 var BinarySearchTree = require('../../../data_structures/tree/tree.js').BinarySearchTree;
 var BSTNode = require('../../../data_structures/tree/tree_node.js').BSTNode;
+const assert = require('chai').assert;
 
 describe("CRUD tree", function () {
 
   it("New empty tree", function () {
     const tree = new BinarySearchTree();
-    expect(tree.root).toBe(null);
-
+    assert.isNull(tree.root);
   });
 
   it("Add root value", function () {
     const tree = new BinarySearchTree();
     tree.add(10);
 
-    expect(tree.root instanceof BSTNode).toBeTruthy();
+    assert.instanceOf(tree.root, BSTNode);
 
-    expect(tree.root.leftNode).toBe(null);
-    expect(tree.root.rightNode).toBe(null);
+    assert.isNull(tree.root.leftNode);
+    assert.isNull(tree.root.rightNode);
   });
 
   it("Add leaf value equal to root value", function () {

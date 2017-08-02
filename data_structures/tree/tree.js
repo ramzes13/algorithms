@@ -44,6 +44,14 @@ class BinarySearchTree {
 
         return minNode;
     }
+
+    static traverseTreeLeft(node, callback) {
+        if (node) {
+            BinarySearchTree.traverseTreeLeft(node.leftNode, callback);
+            callback(node.value);
+            BinarySearchTree.traverseTreeLeft(node.rightNode, callback);
+        }
+    }
 }
 
 module.exports.BinarySearchTree = BinarySearchTree;
