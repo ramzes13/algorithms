@@ -21,31 +21,30 @@ describe("CRUD tree", function () {
 
   it("Add leaf value equal to root value", function () {
     const tree = new BinarySearchTree();
-    expect(tree.add(10)).toBe(true);
-    expect(tree.add(10)).toBe(false);
+    assert.isTrue(tree.add(10));
+    assert.isFalse(tree.add(10));
 
-    expect(tree.root.value).toBe(10);
-    expect(tree.root.leftNode).toBe(null);
-    expect(tree.root.rightNode).toBe(null);
+    assert.equal(tree.root.value, 10);
+    assert.isNull(tree.root.leftNode);
+    assert.isNull(tree.root.rightNode);
   });
 
   it("Add leaf values", function () {
     const tree = new BinarySearchTree();
-    expect(tree.add(10)).toBe(true);
-    expect(tree.add(7)).toBe(true);
-    expect(tree.add(13)).toBe(true);
+    tree.add(10)
+    tree.add(7)
+    tree.add(13)
 
-    expect(tree.root.value).toBe(10);
-    expect(tree.root.leftNode.value).toBe(7);
-    expect(tree.root.rightNode.value).toBe(13);
+    assert.equal(tree.root.value, 10);
+    assert.equal(tree.root.leftNode.value, 7);
+    assert.equal(tree.root.rightNode.value, 13);
   });
 });
 
 describe('Search three', function () {
   it('search null', function () {
     const tree = new BinarySearchTree();
-
-    expect(BinarySearchTree.searchThree(tree, 12)).toBe(null);
+    assert.isNull(BinarySearchTree.searchThree(tree, 12));
   })
 
   it('search value', function () {
